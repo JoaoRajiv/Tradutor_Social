@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Nova categoria</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background: rgb(148, 213, 235);
+            margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: larger;
+        }
+
+        .bigbox {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .box {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            width: 1000px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.979);
+            border-radius: 10px;
+        }
+
+        .littlebox {
+            margin: 20px
+        }
+
+
+        textarea {
+            resize: none;
+            border-radius: 10px;
+            outline: none
+        }
+
+        label {
+            font-weight: bold
+        }
+
+        input[type="submit"] {
+            width: 100px !important;
+            cursor: pointer;
+            background: rgb(8, 193, 255);
+            padding: 8px 5px;
+            color: #fff;
+            font-size: 20px;
+            border: 1px solid #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 1px 1px #333;
+
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+
+            transition: all 0.2s linear;
+        }
+
+        .link{
+            
+            width: 100px !important;
+            cursor: pointer;
+            background: rgb(8, 193, 255);
+            padding: 8px 5px;
+            color: #fff;
+            font-size: 20px;
+            border: 1px solid #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 1px 1px #333;
+
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+
+            transition: all 0.2s linear;
+
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color:rgb(8, 193, 255)">
+        <a class="navbar-brand" href="publicacoes/home.html">
+            <img src="templates/imagens/version 2.1.png" width="" height="" alt="">
+        </a>
+        <nav class="nav">
+            <a class="navbar-brand" href="#">Bem-vindo</a>
+        </nav>
+    </nav>
+    <div class="bigbox">
+        <div class="box">
+            <div class="littlebox">
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="account" value="{{ username }}" />
+                    <label for="id_text_p">Escreva seu texto</label> <br>
+                    <textarea name="text_p" cols="60" rows="6" required="" id="id_text_p"></textarea> <br>
+
+                    <label for="id_text_e">Escreva a tradução do seu texto</label><br>
+                    <textarea name="text_e" cols="60" rows="6" required="" id="id_text_e"></textarea> <br>
+
+                    <input type="submit" value="Salvar">
+                    {% if profile %}
+                    <a href="{% url 'url_delete'  %}" class="link">Deletar</a>
+                    {% endif %}
+                    <p><a href="{% url 'url_feed'%}" class="link">Voltar</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
